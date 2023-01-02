@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
   
-<h1>Contact Us</h1>
+<h1 id="top2">Contact Us</h1>
 
 <header>
   <nav>
@@ -44,10 +44,40 @@
 <body>
   <h2>Our Contact Form</h2>
 
-<form>
+<p>Send Us a Message</p>
 
+<form method="post">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name ="name" value="your name">
+ 
+  <br>
+  <br>
   
+  <label for="email">Email:</label>
+  <input type="text" id="email" name="email" value= "your email">
+  <br>
+  <br>
+  <label for ="message">Your Message:</label>
+  <br>
+  <textarea rows="10" cols="30" name="message">Type your message here</textarea>
+<br>
+  <input type="submit" id="submit">
+  <input type="reset"id="reset">
 </form>
+<br>
+  
+<h2>Our Location</h2>
+<em>555 Taco Temptation Lane, Suite T<br>Kansas City, MO 55555-5555</em>
+  <br> <br>
+<em>Phone:</em> <u>555-555-5555</u>
+  <br> <br>
+  <a href="#top2">Back to Top</a>
+  <hr>
   
 </body>
- 
+  
+<footer>
+    <p>Copyright &copy; The Little Taco Shop</p>
+</footer>
+  
+</html>
