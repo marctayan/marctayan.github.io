@@ -13,9 +13,7 @@ body {
 
 
 body {
-    background:black; 
-    #max-width: 48em;
-    #padding: 2em 5% 0; 
+    background:black;  
     font-size: 17px;
     line-height: 1.5;
 }
