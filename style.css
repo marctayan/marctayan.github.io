@@ -1,31 +1,104 @@
 body {
-    background: #000 ;
-    color: #fff;
-    padding: 25px;
-    
-  }
+    background:#000;
+    color:#fff;
+    padding: 25px
+}
 
-
-  html, body {
+html, body {
     height: 100%;
+    width: 100%;
 }
 
-
-
-body {
-    background:black;  
-    font-size: 17px;
-    line-height: 1.5;
-}
-
-.image {
+image {
     position: relative;
     float: right;
     border: 5px solid rgb(210, 203, 203);
-    
+    width: 10px;
+    height: 10px;
+}
+
+.title{
+    font-size:45px;
+    text-align: center;
 }
 
 #Projects {
     float: right;
 }
 
+
+@media only screen and (min-width: 768px) {
+    body {
+        background:#000;
+        color:#fff;
+        padding: 25px
+    }
+
+    html, body {
+        height: 100%;
+        width: 100%;
+    }
+    body {
+        background:black;  
+        font-size: 17px;
+        line-height: 1.5;
+    }
+    
+    .image {
+        position: relative;
+        float: right;
+        border: 5px solid rgb(210, 203, 203);
+        width: 350px;
+        height: 300px;
+        
+    }
+    
+    #Projects {
+        float: right;
+    }
+
+
+}
+
+
+
+
+
+
+@media only screen and (min-width: 1000px) {
+    body {
+        background: #000 ;
+        color: #fff;
+        padding: 25px;
+        
+      }
+    
+    
+      html, body {
+        height: 100%;
+        width: 100%;
+    }
+    
+    
+    
+    body {
+        background:black;  
+        font-size: 17px;
+        line-height: 1.5;
+    }
+    
+    .image {
+        position: relative;
+        float: right;
+        border: 5px solid rgb(210, 203, 203);
+        width: 400px;
+        height: 350px;
+        
+    }
+    
+    #Projects {
+        float: right;
+    }
+    
+
+}
