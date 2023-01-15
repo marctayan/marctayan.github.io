@@ -10,12 +10,23 @@ body {
     height: 100%;
 }
 
-html {
-    display: table;
-    margin: auto;
-}
+
 
 body {
-    display: table-cell;
-    vertical-align: middle;
+    background:black; 
+    #max-width: 48em;
+    #padding: 2em 5% 0; 
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.image {
+    position: relative;
+    float: right;
+    border: 5px solid rgb(210, 203, 203);
+    
+}
+
+#Projects {
+    float: right;
 }
