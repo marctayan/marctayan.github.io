@@ -10,9 +10,12 @@
     line-height: 1.5;
     padding: 2em 5% 0; 
     margin: auto;
-    
-    
-  }
+}
+u {
+        color: magenta;
+        font-size: 75px;"
+}
+  
 
 .title {
     font-size: 75px;
@@ -24,6 +27,7 @@
 
 
 .image {
+    position: relative;
     float: right;
     border: 5px solid rgb(210, 203, 203);
     width: 400px;
@@ -31,14 +35,37 @@
     
 }
 
-#Projects {
-    float: right;
+
+
+
+#Project {
+    position: relative;
+    float: left;
+    font-size: 24px;
     
 }
 
-#Project {
-    font-size: 75px;
+#Podcast {
+    position: relative;
+    float: right;
 }
+
+#Podcast img {
+    width: 150px;
+    height: 150px;
+    display: block;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+    
+
+}
+
+
+
+
+
 
 @media screen and (max-width: 670px) {
     
@@ -97,7 +124,9 @@
         font-size: 30px;
     }
 
-
+    u {
+        color: magenta;
+    }
 
 
 
