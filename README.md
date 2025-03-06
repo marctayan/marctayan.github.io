@@ -1,2 +1,4 @@
-# marctayan.github.io
- a personal pseudo-portfolio/personal project. gets slowly updated as my knowledge of front-end development increases.
+# Newspeak Translator
+An English project based on the novel 1984 by George Orwell.
+
+Big Brother loves you.
