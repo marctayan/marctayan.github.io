@@ -1,60 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Marc Andre Taytayan</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newspeak Translator</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+        }
+        h1 {
+            color: #cc0000;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        #translatedText {
+            margin-top: 20px;
+            font-size: 18px;
+            color: white;
+            padding: 15px;
+            background-color: #333;
+            border-radius: 5px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
-
 <body>
+    <img src="https://64.media.tumblr.com/9c177a66476ec3c5a0e9988530e1edab/tumblr_mud4qkVIBQ1s5jjtzo1_400.gifv" alt="Newspeak Image"/>
+    <h1>Newspeak Translator</h1>
+    <p>Enter an Oldspeak word or phrase to see its Newspeak equivalent.</p>
+    <input type="text" id="oldSpeakInput" placeholder="Enter Oldspeak text here.." />
+    <button onclick="translateText()">Translate</button>
 
-  <header>
-    <a href="/" style='color: magenta;' class="title">marc andre taytayan</a>
-  </header> 
+    <div id="translatedText"></div>
 
-  <div id="image">
-  <img class="image" src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2014/01/14/12/briangriffin.jpg?quality=75&width=982&height=726&auto=webp">
-  </div>
-  <div id="text">
-  <p>sophomore at Cosumnes Oaks High School</p>
-  <br>
+    <script>
+        const newspeakDictionary = {
+    // Ministries
+    "ministry of truth": "Minitrue",
+    "ministry of peace": "Minipax",
+    "ministry of love": "Miniluv",
+    "ministry of plenty": "Miniplenty",
 
-  <p>Elk Grove</p>
-  <p>California</p>
-  <p>he/him</p>
-  <br>
-
-  <p>marctaytayan@gmail.com</p>
-
-  <a href="https://twitter.com/marcsocool">twitter</a>
-  <br>
-
-  <a href="https://github.com/marctayan">github</a>
-  <br>
-  <br>
-  <div id="Project">
-  <u>Projects</u>
-  <br>
-  <a href="https://denisedjjd.github.io/" style="font-size: 25px;">diseaserecognition.org</a>
-  <p>Co-Founder and Programmer</p>
-  <p style="font-size: 12px;">(work in progress)</p>
-  </div>
-
-  <div id="Podcast">
-    <u>Podcast</u>
-    <br>
+    // Party & Society
+    "inner party": "Inner Party",
+    "outer party": "Outer Party",
+    "proles": "proles",
+    "big brother": "Big Brother",
+    "thought police": "Thinkpol",
+    "secret police": "Thinkpol",
+    "comrade": "comrade",
+    "citizen": "comrade",
+    "loyalty": "goodthink",
+    "obedience": "goodthink",
+    "traitor": "unperson",
+    "enemy of the people": "unperson",
+    "spy": "unperson",
+    "criminal": "crimethinker",
+    "child": "childcomrade",
+    "family": "familyunit",
     
-    <a href="https://www.youtube.com/@ApAllNighters">
-    <img src="https://media.discordapp.net/attachments/1059707381514240090/1062610301960339546/Untitled48_20230110215334.png?width=964&height=670"></img>
-    </a>
+    // Thought & Language
+    "doublethink": "doublethink",
+    "thoughtcrime": "thoughtcrime",
+    "facecrime": "facecrime",
+    "newspeak": "Newspeak",
+    "oldspeak": "Oldspeak",
+    "goodthink": "goodthink",
+    "crimethink": "crimethink",
+    "duckspeak": "duckspeak",
+    "bellyfeel": "bellyfeel",
+    "blackwhite": "blackwhite",
+    "ownlife": "ownlife",
+    "understand": "wiseup",
+    "forget": "unwise",
+    "question": "unthink",
+    "logic": "oldspeak",
+    "lie": "truthflex",
+    "fact": "bellyfeel",
+    
+    // Hate & Control
+    "two minutes hate": "Two Minutes Hate",
+    "hate week": "Hate Week",
+    "unperson": "unperson",
+    "war is peace": "war is peace",
+    "freedom is slavery": "freedom is slavery",
+    "ignorance is strength": "ignorance is strength",
+    "torture": "re-education",
+    "punishment": "re-education",
+    "guilt": "thoughtcrime",
+    "doubt": "unthink",
+    
+    // Nations
+    "eastasia": "Eastasia",
+    "eurasia": "Eurasia",
+    "oceania": "Oceania",
 
-  </div>
+    // Simplified Adjectives
+    "bad": "ungood",
+    "very bad": "plusungood",
+    "extremely bad": "doubleplusungood",
+    "horrible": "doubleplusungood",
+    "good": "good",
+    "very good": "plusgood",
+    "excellent": "doubleplusgood",
+    "great": "plusgood",
+    "best": "doubleplusgood",
 
-  </div>
+    // Comparatives & Intensifiers
+    "full of": "fullwise",
+    "more": "pluswise",
+    "most": "doublepluswise",
+    "less": "minuswise",
+    "least": "doubleminuswise",
+    "better": "plusgoodwise",
+    "worse": "plusungoodwise",
+    "fast": "speedwise",
+    "slow": "slothwise",
+    
+    // Economy & Labor
+    "labor camp": "joycamp",
+    "prison": "joycamp",
+    "job": "duty",
+    "work": "duty",
+    "worker": "comrade",
+    "boss": "Big Brother",
+    "money": "credits",
+    "rich": "plusgood economicwise",
+    "poor": "ungood economicwise",
+    "tax": "Big Brother share",
+    "profit": "pluscredits",
+    "debt": "minuscredits",
+    
+    // Actions & Common Words
+    "increase": "plusplus",
+    "decrease": "minusplus",
+    "delete": "unmake",
+    "destroy": "unmake",
+    "create": "make",
+    "write": "writewise",
+    "speak": "speakwise",
+    "read": "readwise",
+    "watch": "seeplus",
+    "listen": "hearwise",
+    "eat": "chewwise",
+    "drink": "sipwise",
+    "sleep": "restwise",
+    "wake up": "riseplus",
+    "run": "speedplus",
+    "walk": "stepwise",
+    "stop": "haltwise",
+    
+    // Emotions & Mental States
+    "happiness": "bellyfeel",
+    "sadness": "unfeel",
+    "anger": "ragewise",
+    "fear": "unboldwise",
+    "love": "goodfeel",
+    "joy": "plusfeel",
+    "pain": "unfeel",
+    "hope": "plusthink",
+    
+    // Government & War
+    "police": "Thinkpol",
+    "army": "Big Brother Guard",
+    "soldier": "warcomrade",
+    "war": "peaceaction",
+    "peace": "warpause",
+    "weapon": "warstick",
+    "missile": "boomstick",
+    "bomb": "skyfire",
+    "victory": "pluswin",
+    
+    // Technology & Surveillance
+    "computer": "thinkmachine",
+    "phone": "speakmachine",
+    "camera": "seeplus",
+    "microphone": "hearplus",
+    "radio": "speakbox",
+    "television": "viewbox",
+    "internet": "Big Brother Net",
+    "AI": "Big Brother Mind",
+    "security": "goodthink guardwise",
+    
+    // Daily Life
+    "food": "eatstuff",
+    "drink": "sipstuff",
+    "water": "sipstuff pluspure",
+    "clothes": "wearstuff",
+    "house": "livingspace",
+    "door": "enterthing",
+    "window": "seehole",
+    "light": "brightwise",
+    "dark": "unbrightwise",
+    "medicine": "healthwise",
+    "doctor": "healthcomrade",
+    "hospital": "healthcenter",
+    
+    // Relationships & People
+    "friend": "goodcomrade",
+    "enemy": "unperson",
+    "parent": "parentcomrade",
+    "mother": "parentcomrade female",
+    "father": "parentcomrade male",
+    "brother": "siblingcomrade male",
+    "sister": "siblingcomrade female",
+    "husband": "matecomrade male",
+    "wife": "matecomrade female",
+    
+    // Time & Measurement
+    "morning": "risehour",
+    "afternoon": "midhour",
+    "evening": "dimhour",
+    "night": "darkhour",
+    "today": "nowday",
+    "yesterday": "minusoneday",
+    "tomorrow": "plusoneday",
+    "week": "sevenday",
+    "month": "thirtyday",
+    "year": "twelve thirtyday",
+    "hour": "sixtyminwise",
+    "minute": "sixtysecwise",
+    "second": "tickwise"
+};
 
-  
 
+        function translateText() {
+            // Get the text from the textbox
+            let originalText = document.getElementById('oldSpeakInput').value.toLowerCase();
+            let translatedText = originalText;
+
+            // Sort dictionary keys by length (longest first) to prioritize multi-word replacements
+            let sortedKeys = Object.keys(newspeakDictionary).sort((a, b) => b.length - a.length);
+
+            // Replace words/phrases in input text
+            sortedKeys.forEach(oldSpeak => {
+                // Create a regex to match whole words only
+                let regex = new RegExp("\\b" + oldSpeak + "\\b", "gi");
+                // Replace all matches with the Newspeak equivalent
+                translatedText = translatedText.replace(regex, newspeakDictionary[oldSpeak]);
+            });
+
+            // Display the translated text
+            document.getElementById('translatedText').innerText = translatedText;
+        }
+
+        // Add event listener for pressing Enter key in the input field
+        document.getElementById('oldSpeakInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                translateText();
+            }
+        });
+    </script>
 </body>
 </html>
